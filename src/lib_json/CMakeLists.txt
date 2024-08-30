@@ -115,15 +115,15 @@ list(APPEND REQUIRED_FEATURES
         cxx_variadic_templates # Variadic templates, as defined in N2242.
 )
 
-
+    
     if(BUILD_SHARED_LIBS)
-    set(LIBRARY_TYPE SHARED)
+    set(LIB jsoncpp_shared)
+    add_library(${LIB} SHARED ${PUBLIC_HEADERS} ${JSONCPP_SOURCES})
 else()
-    set(LIBRARY_TYPE STATIC)
+    set(LIB jsoncpp_static)
+    add_library(${LIB} STATIC ${PUBLIC_HEADERS} ${JSONCPP_SOURCES})
 endif()
 
-set(LIB ${PROJECT_NAME}_lib)
-add_library(${LIB} ${LIBRARY_TYPE} ${PUBLIC_HEADERS} ${JSONCPP_SOURCES})
 
 # ... (rest of the script remains the same)
 
